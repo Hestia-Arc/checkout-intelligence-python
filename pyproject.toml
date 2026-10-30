@@ -5,17 +5,21 @@ version = "0.1.0"
 description = "Merchant checkout analytics and intelligence system"
 requires-python = ">=3.12,<3.13"
 dependencies = [
-    "fastapi>=0.115,<1.0",
-    "uvicorn[standard]>=0.34,<1.0",
-    "sqlalchemy>=2.0,<3.0",
-    "alembic>=1.14,<2.0",
+    "django>=5.2,<5.3",
+    "djangorestframework>=3.16,<4.0",
     "psycopg[binary]>=3.2,<4.0",
+    "python-dotenv>=1.0,<2.0",
 ]
 
 [dependency-groups]
 dev = [
     "pytest>=8.3,<9.0",
+    "pytest-django>=4.11,<5.0",
 ]
 
 [tool.uv]
 package = false
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["test_*.py", "*_tests.py", "tests.py"]
